@@ -33,8 +33,10 @@ public class CadastroEspacoBean {
         this.espaco = espaco;
     }
 
-    public void cadastraEspaco() {
-        espacoDAO.cadastrarEspaco(this.espaco);
+    public void cadastraEspaco() throws Exception {
+        espaco.setCapacidade(666);
+        espaco.setLocalidade("kid animal");
+        espacoDAO.cadastrarEspaco(espaco);
     }
 
 }

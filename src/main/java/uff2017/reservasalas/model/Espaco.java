@@ -27,15 +27,15 @@ public class Espaco {
     private String localidade;
     
     //nao sei como faz coluna assim
-    private ArrayList<Recurso> recursos;
-
-    public ArrayList<Recurso> getRecursos() {
-        return recursos;
-    }
-
-    public void setRecursos(ArrayList<Recurso> recursos) {
-        this.recursos = recursos;
-    }
+//    private ArrayList<Recurso> recursos;
+//
+//    public ArrayList<Recurso> getRecursos() {
+//        return recursos;
+//    }
+//
+//    public void setRecursos(ArrayList<Recurso> recursos) {
+//        this.recursos = recursos;
+//    }
     
     
     public Espaco() {      

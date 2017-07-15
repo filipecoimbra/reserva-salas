@@ -7,8 +7,10 @@ package uff2017.reservasalas.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import uff2017.reservasalas.Database;
 import uff2017.reservasalas.model.Espaco;
 
 /**
@@ -36,24 +38,20 @@ public class EspacoDAO {
         }
     }
 
-    public boolean cadastrarEspaco(Espaco espaco) {
-        try {
-            em.persist(espaco);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public void cadastrarEspaco(Espaco espaco) {        
+        Database db = new Database();
+        db.executePersist(em, espaco);                        
+
     }
 
-    public boolean deletarEspaco(Espaco espaco) {
-        try {
-            em.remove(espaco);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public void updateEspaco(Espaco espaco) {
+        Database db = new Database();
+        db.executeUpdate(em, espaco);        
+    }
+    
+    public void deletarEspaco(Espaco espaco) {
+        Database db = new Database();
+        db.executeDelete(em, espaco);        
     }
 
 }

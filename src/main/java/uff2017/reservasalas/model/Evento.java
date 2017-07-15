@@ -23,7 +23,7 @@ public class Evento {
     private Date data;
     private int maxParticipantes;
     private boolean isAprovado;
-    private int idEspaco;
+    private Espaco espaco;
     private ArrayList<TipoUsuario> tiposUsuarioPermitidos;
     private TipoEvento tipoEvento; 
 
