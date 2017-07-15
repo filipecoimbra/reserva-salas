@@ -25,8 +25,6 @@ public class CadastroEspacoBean {
     private EspacoDAO espacoDAO = new EspacoDAO();
     private Espaco espaco = new Espaco();
 
-    
-    
     public Espaco getEspaco() {
         return espaco;
     }
@@ -35,8 +33,8 @@ public class CadastroEspacoBean {
         this.espaco = espaco;
     }
 
-    public void cadastraEspaco(){
-    
+    public void cadastraEspaco() {
+        espacoDAO.cadastrarEspaco(this.espaco);
     }
-    
+
 }
