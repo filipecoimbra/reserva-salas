@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edicao de Usuario</title>
+    </h:head>
+    <h:body>
+        <h:form>                      
+                        
+            Nome: <h:inputText value="#{editaUsuarioBean.usuario.nome}" /><br></br>
+            Login: <h:inputText value="#{editaUsuarioBean.usuario.login}" /><br></br>
+            Senha: <h:inputSecret  value="#{editaUsuarioBean.usuario.senha}" /><br></br>
+            
+            Perfil de Usuario:
+            <h:selectOneMenu value="#{editaUsuarioBean.usuario.perfilUsuario.idPerfilUsuario}"> 
+                <f:selectItem itemValue="1" itemLabel="Administrador" /> 
+                <f:selectItem itemValue="2" itemLabel="Organizador" /> 
+                <f:selectItem itemValue="3" itemLabel="Participante" />                         
+            </h:selectOneMenu><br></br>
+            
+            Tipo de Usuario:
+            <h:selectOneMenu value="#{editaUsuarioBean.usuario.perfilUsuario.idPerfilUsuario}"> 
+                <f:selectItem itemValue="1" itemLabel="Generico" /> 
+                <f:selectItem itemValue="2" itemLabel="Funcionario IC" /> 
+                <f:selectItem itemValue="3" itemLabel="Aluno graduacao" /> 
+                <f:selectItem itemValue="4" itemLabel="Aluno Pos-graduacao" /> 
+                <f:selectItem itemValue="5" itemLabel="Docente" />
+            </h:selectOneMenu><br></br>
+                        
+            <h:commandButton value="Editar" action="#{editaUsuarioBean.editaUsuario()}" />
+            
+            <h:commandButton value="Excluir" action="#{editaUsuarioBean.excluiUsuario()}" />
+            
+        </h:form>
+
+    </h:body>
+</html>
+
