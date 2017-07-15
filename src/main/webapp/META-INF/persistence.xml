@@ -6,7 +6,11 @@
    
         <!-- entidade mapeada -->
         <class>uff2017.reservasalas.model.Espaco</class>
-   
+        <class>uff2017.reservasalas.model.Evento</class>
+        <class>uff2017.reservaslas.model.Solicitacao</class>
+        <class>uff2017.reservaslas.model.Usuario</class>
+        
+    </persistence-unit>
         <properties>
               
             <!-- dados da conexao -->
