@@ -13,7 +13,7 @@ import java.util.Date;
  * @author fabri
  */
 public class Evento {
- 
+
     private int idEvento;
     private String nome;
     private int idTipoEvento;
@@ -25,10 +25,10 @@ public class Evento {
     private boolean isAprovado;
     private Espaco espaco;
     private ArrayList<TipoUsuario> tiposUsuarioPermitidos;
-    private TipoEvento tipoEvento; 
+    private TipoEvento tipoEvento;
 
-    public Evento(){
-        
+    public Evento() {
+
     }
 
     public TipoEvento getTipoEvento() {
@@ -37,8 +37,8 @@ public class Evento {
 
     public void setTipoEvento(TipoEvento tipoEvento) {
         this.tipoEvento = tipoEvento;
-    }        
-    
+    }
+
     public ArrayList<TipoUsuario> getTiposUsuarioPermitidos() {
         return tiposUsuarioPermitidos;
     }
@@ -46,7 +46,7 @@ public class Evento {
     public void setTiposUsuarioPermitidos(ArrayList<TipoUsuario> tiposUsuarioPermitidos) {
         this.tiposUsuarioPermitidos = tiposUsuarioPermitidos;
     }
-    
+
     public int getIdEvento() {
         return idEvento;
     }
@@ -120,13 +120,11 @@ public class Evento {
     }
 
     public int getIdEspaco() {
-        return idEspaco;
+        return espaco.getIdEspaco();
     }
 
     public void setIdEspaco(int idEspaco) {
-        this.idEspaco = idEspaco;
+        this.espaco.setIdEspaco(idEspaco);
     }
-    
-    
-    
+
 }
