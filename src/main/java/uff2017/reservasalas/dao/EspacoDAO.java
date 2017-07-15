@@ -18,7 +18,7 @@ import uff2017.reservasalas.model.Espaco;
 public class EspacoDAO {
 
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("espacos");
+            .createEntityManagerFactory("Espaco");
     private EntityManager em = factory.createEntityManager();
 
     public Espaco getEspaco(String nomeEspaco, String senha) {
