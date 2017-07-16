@@ -10,45 +10,47 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
-import uff2017.reservasalas.model.Usuario;
+import uff2017.reservasalas.model.TipoEvento;
 
 /**
  *
  * @author fabri
  */
-public class UsuarioDAO {
+public class TipoEventoDAO {
+
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("Usuario");
+            .createEntityManagerFactory("TipoEvento");
     private EntityManager em = factory.createEntityManager();
 
-    public Usuario getUsuario(String nomeUsuario, String senha) {
+    public TipoEvento getTipoEvento(String nomeTipoEvento, String senha) {
 
         try {
-            Usuario usuario = (Usuario) em
+            TipoEvento tipoTipoEvento = (TipoEvento) em
                     .createQuery(
-                            "SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeUsuario)
+                            "SELECT u from TipoEvento u where u.nomeTipoEvento = :name and u.senha = :senha")
+                    .setParameter("name", nomeTipoEvento)
                     .setParameter("senha", senha).getSingleResult();
 
-            return usuario;
+            return tipoTipoEvento;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarTipoEvento(TipoEvento tipoTipoEvento) {
         Database db = new Database();
-        db.executePersist(em, usuario);
+        db.executePersist(em, tipoTipoEvento);
 
     }
 
-    public void updateUsuario(Usuario usuario) {
+    public void updateTipoEvento(TipoEvento tipoTipoEvento) {
         Database db = new Database();
-        db.executeUpdate(em, usuario);
+        db.executeUpdate(em, tipoTipoEvento);
     }
 
-    public void deletarUsuario(Usuario usuario) {
+    public void deletarTipoEvento(TipoEvento tipoTipoEvento) {
         Database db = new Database();
-        db.executeDelete(em, usuario);
+        db.executeDelete(em, tipoTipoEvento);
     }
+
 }

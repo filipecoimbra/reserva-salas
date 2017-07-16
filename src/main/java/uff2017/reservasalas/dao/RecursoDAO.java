@@ -10,45 +10,47 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
-import uff2017.reservasalas.model.Usuario;
+import uff2017.reservasalas.model.Recurso;
 
 /**
  *
  * @author fabri
  */
-public class UsuarioDAO {
+public class RecursoDAO {
+
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("Usuario");
+            .createEntityManagerFactory("Recurso");
     private EntityManager em = factory.createEntityManager();
 
-    public Usuario getUsuario(String nomeUsuario, String senha) {
+    public Recurso getRecurso(String nomeRecurso, String senha) {
 
         try {
-            Usuario usuario = (Usuario) em
+            Recurso recurso = (Recurso) em
                     .createQuery(
-                            "SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeUsuario)
+                            "SELECT u from Recurso u where u.nomeRecurso = :name and u.senha = :senha")
+                    .setParameter("name", nomeRecurso)
                     .setParameter("senha", senha).getSingleResult();
 
-            return usuario;
+            return recurso;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarRecurso(Recurso recurso) {
         Database db = new Database();
-        db.executePersist(em, usuario);
+        db.executePersist(em, recurso);
 
     }
 
-    public void updateUsuario(Usuario usuario) {
+    public void updateRecurso(Recurso recurso) {
         Database db = new Database();
-        db.executeUpdate(em, usuario);
+        db.executeUpdate(em, recurso);
     }
 
-    public void deletarUsuario(Usuario usuario) {
+    public void deletarRecurso(Recurso recurso) {
         Database db = new Database();
-        db.executeDelete(em, usuario);
+        db.executeDelete(em, recurso);
     }
+
 }

@@ -10,45 +10,47 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
-import uff2017.reservasalas.model.Usuario;
+import uff2017.reservasalas.model.TipoUsuario;
 
 /**
  *
  * @author fabri
  */
-public class UsuarioDAO {
+public class TipoUsuarioDAO {
+
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("Usuario");
+            .createEntityManagerFactory("TipoUsuario");
     private EntityManager em = factory.createEntityManager();
 
-    public Usuario getUsuario(String nomeUsuario, String senha) {
+    public TipoUsuario getTipoUsuario(String nomeTipoUsuario, String senha) {
 
         try {
-            Usuario usuario = (Usuario) em
+            TipoUsuario tipoUsuario = (TipoUsuario) em
                     .createQuery(
-                            "SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeUsuario)
+                            "SELECT u from TipoUsuario u where u.nomeTipoUsuario = :name and u.senha = :senha")
+                    .setParameter("name", nomeTipoUsuario)
                     .setParameter("senha", senha).getSingleResult();
 
-            return usuario;
+            return tipoUsuario;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarTipoUsuario(TipoUsuario tipoUsuario) {
         Database db = new Database();
-        db.executePersist(em, usuario);
+        db.executePersist(em, tipoUsuario);
 
     }
 
-    public void updateUsuario(Usuario usuario) {
+    public void updateTipoUsuario(TipoUsuario tipoUsuario) {
         Database db = new Database();
-        db.executeUpdate(em, usuario);
+        db.executeUpdate(em, tipoUsuario);
     }
 
-    public void deletarUsuario(Usuario usuario) {
+    public void deletarTipoUsuario(TipoUsuario tipoUsuario) {
         Database db = new Database();
-        db.executeDelete(em, usuario);
+        db.executeDelete(em, tipoUsuario);
     }
+
 }

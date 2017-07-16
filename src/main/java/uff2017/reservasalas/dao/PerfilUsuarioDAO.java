@@ -10,45 +10,47 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
-import uff2017.reservasalas.model.Usuario;
+import uff2017.reservasalas.model.PerfilUsuario;
 
 /**
  *
  * @author fabri
  */
-public class UsuarioDAO {
+public class PerfilUsuarioDAO {
+
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("Usuario");
+            .createEntityManagerFactory("PerfilUsuario");
     private EntityManager em = factory.createEntityManager();
 
-    public Usuario getUsuario(String nomeUsuario, String senha) {
+    public PerfilUsuario getPerfilUsuario(String nomePerfilUsuario, String senha) {
 
         try {
-            Usuario usuario = (Usuario) em
+            PerfilUsuario perfilusuario = (PerfilUsuario) em
                     .createQuery(
-                            "SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeUsuario)
+                            "SELECT u from PerfilUsuario u where u.nomePerfilUsuario = :name and u.senha = :senha")
+                    .setParameter("name", nomePerfilUsuario)
                     .setParameter("senha", senha).getSingleResult();
 
-            return usuario;
+            return perfilusuario;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarPerfilUsuario(PerfilUsuario perfilusuario) {
         Database db = new Database();
-        db.executePersist(em, usuario);
+        db.executePersist(em, perfilusuario);
 
     }
 
-    public void updateUsuario(Usuario usuario) {
+    public void updatePerfilUsuario(PerfilUsuario perfilusuario) {
         Database db = new Database();
-        db.executeUpdate(em, usuario);
+        db.executeUpdate(em, perfilusuario);
     }
 
-    public void deletarUsuario(Usuario usuario) {
+    public void deletarPerfilUsuario(PerfilUsuario perfilusuario) {
         Database db = new Database();
-        db.executeDelete(em, usuario);
+        db.executeDelete(em, perfilusuario);
     }
+
 }
