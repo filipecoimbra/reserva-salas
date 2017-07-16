@@ -41,7 +41,7 @@ public final class Util {
     public static boolean hora1MaiorQue2(String horario1, String horario2) {
         int hora1 = Integer.parseInt(horario1.substring(0, 2));
         int hora2 = Integer.parseInt(horario2.substring(0, 2));
-        if (hora1 > hora2 == true) {
+        if (hora1 > hora2) {
             return true;
         } else {
             if (hora1 == hora2) {

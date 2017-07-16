@@ -54,7 +54,7 @@ public class ListaEventoBean implements Serializable {
     }
 
     public void cancelInscrever() {
-        this.restore(eventoBeforeEdit);
+        evento.restore(eventoBeforeEdit);
         this.evento = new Evento();
         edit = false;
     }
@@ -77,13 +77,18 @@ public class ListaEventoBean implements Serializable {
         }
 
         if (inserir) {
-            evento.getUsuariosInscritos().add(usuario);
-            eventoDAO.updateEvento(evento);
-            this.evento = new Evento();
-            edit = false;
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario inscrito com sucesso."));
+            evento = eventoDAO.getEvento(evento.getIdEvento());
+            if (evento.getUsuariosInscritos().size() < evento.getMaxParticipantes()) {
+                evento.getUsuariosInscritos().add(usuario);                
+                eventoDAO.updateEvento(evento);
+                this.evento = new Evento();
+                edit = false;
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario inscrito com sucesso."));                
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento lotado."));
+            }
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario nao pode participar do evento, pois seu tipo nao esta habilitado para participar.."));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario nao pode participar do evento, pois seu tipo nao esta habilitado para participar."));
         }
 
     }
@@ -134,10 +139,6 @@ public class ListaEventoBean implements Serializable {
 
     public void setEdit(boolean edit) {
         this.edit = edit;
-    }
-
-    private void restore(Evento eventoBeforeEdit) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }   
 
 }

@@ -4,30 +4,54 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Cadastro de Evento</title>
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <title>Cadastro de Eventos</title>
     </h:head>
     <h:body>
-        <h:form>                        
-            Nome: <h:inputText value="#{cadastraEventoBean.evento.nome}" /> <br></br>
-            Descricao: <h:inputText value="#{cadastraEventoBean.evento.descricao}" /><br></br>
-            Hora de Inicio: <h:inputText value="#{cadastraEventoBean.evento.horaInicio}"  /><br></br>
-            Hora de Fim: <h:inputText value="#{cadastraEventoBean.evento.horaFim}" /><br></br>
-            Data: <h:inputText value="#{cadastraEventoBean.evento.data}">
-                <f:convertDateTime pattern="d/M/yyyy" />
-            </h:inputText><br></br>
-            Número máximo de participantes: <h:inputText value="#{cadastraEventoBean.evento.maxParticipantes}" /><br></br>
+        <div class="title"> Cadastro de Eventos</div>
+        <hr></hr>
+        <div class="content">
+            <h:form>       
+                <div class="labelfield">
+                    <div class="label">Nome:</div>
+                    <div class="field"><h:inputText value="#{cadastraEventoBean.evento.nome}" /></div> <br></br>
+                </div>
+                <div class="labelfield">
+                    <div class="label">Descricao: </div>
+                    <div class="field"> 
+                        <h:inputText value="#{cadastraEventoBean.evento.descricao}" />
+                    </div><br></br>
+                </div>
+                <div class="labelfield">
+                    <div class="label">Hora de Inicio: </div> 
+                    <div class="field"> <h:inputText value="#{cadastraEventoBean.evento.horaInicio}"  /> </div><br></br>
+                </div>
+                <div class="labelfield">
+                    <div class="label">Hora de Fim: </div>
+                    <div class="field"> <h:inputText value="#{cadastraEventoBean.evento.horaFim}" /></div><br></br>
+                </div>
+                <div class="labelfield">
+                    <div class="label">Data:</div> 
+                    <div class="field"> <h:inputText value="#{cadastraEventoBean.evento.data}">
+                            <f:convertDateTime pattern="d/M/yyyy" />
+                        </h:inputText></div><br></br>
+                </div>
+                <div class="labelfield">
+                    <div class="label">Número máximo de participantes: </div> 
+                    <div class="field" style="margin-top:20px"> <h:inputText value="#{cadastraEventoBean.evento.maxParticipantes}" />
+                    </div><br></br>
+                </div>
 
-            Tipo de usuarios aceitos:<br></br>
-            <h:selectBooleanCheckbox value="#{cadastraEventoBean.alunograduacao}" /> Alunos Graduacao<br></br>
-            <h:selectBooleanCheckbox value="#{cadastraEventoBean.alunopos}" /> Alunos Pos-Graduacao<br></br>
-            <h:selectBooleanCheckbox value="#{cadastraEventoBean.docentes}" /> Docentes<br></br>            
+                Tipo de usuarios aceitos:<br></br>
+                <h:selectBooleanCheckbox class="squaredThree" value="#{cadastraEventoBean.alunograduacao}" /> Alunos Graduacao<br></br>
+                <h:selectBooleanCheckbox class="squaredThree" value="#{cadastraEventoBean.alunopos}" /> Alunos Pos-Graduacao<br></br>
+                <h:selectBooleanCheckbox class="squaredThree" value="#{cadastraEventoBean.docentes}" /> Docentes<br></br>            
 
+                <h:commandButton class="button" value="Cadastrar" action="#{cadastraEventoBean.cadastraEvento()}" />
 
-            <h:commandButton value="Cadastrar" action="#{cadastraEventoBean.cadastraEvento()}" />
-            
-            <h:messages style="color:red;" />
-        </h:form>
-
+                <h:messages style="color:red;" />
+            </h:form>
+        </div>
     </h:body>
 </html>
 
