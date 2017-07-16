@@ -20,6 +20,7 @@ public class Espaco {
 
     @Id
     @GeneratedValue
+    @Column(name = "espaco_id", unique = true, nullable = false)
     private int idEspaco;
     @Column(nullable = false)
     private int capacidade;
@@ -50,6 +51,12 @@ public class Espaco {
 
     }
 
+    public Espaco(int id, int cap, String local) {
+        idEspaco = id;
+        capacidade = cap;
+        localidade = local;
+    }
+
     public int getIdEspaco() {
         return idEspaco;
     }
@@ -72,6 +79,17 @@ public class Espaco {
 
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
+    }
+
+    @Override
+    public Espaco clone() {
+        return new Espaco(idEspaco, capacidade, localidade);
+    }
+    
+    public void restore(Espaco espaco) {
+        this.idEspaco = espaco.getIdEspaco();
+        this.capacidade = espaco.getCapacidade();
+        this.localidade = espaco.getLocalidade();
     }
 
 }

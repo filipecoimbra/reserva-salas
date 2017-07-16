@@ -1,4 +1,5 @@
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\ListaUsuarioBean.java
+C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\TipoUsuarioDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\EventoDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\Database.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\Usuario.java
@@ -12,16 +13,19 @@ C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\SolicitacaoDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\ConfirmarPresencaBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\AprovaSolicitacaoBean.java
+C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\TipoEventoDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\Solicitacao.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\CadastraSolicitacaoBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\CadastroEspacoBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\CadastraEventoBean.java
+C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\RecursoDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\EditaUsuarioBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\EditaEspacoBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\ListaEspacoBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\TipoEvento.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\ListaSolicitacaoBean.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\CadastraUsuarioBean.java
+C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\dao\PerfilUsuarioDAO.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\Recurso.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\Espaco.java
 C:\Users\fabri\Documents\NetBeansProjects\github\reservasalas\src\main\java\uff2017\reservasalas\model\TipoUsuario.java

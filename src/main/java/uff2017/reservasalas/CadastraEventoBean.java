@@ -25,6 +25,7 @@ public class CadastraEventoBean {
         this.evento.setIsAprovado(true);
         
         //TODO JPA Insert
+        eventoDAO.cadastrarEvento(evento);
     }
 
     public Evento getEvento() {

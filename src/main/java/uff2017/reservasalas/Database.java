@@ -20,6 +20,7 @@ public class Database {
         transaction.begin();
         em.persist(entity);
         transaction.commit();
+        
     }
     
     public void executeDelete(EntityManager em, Object entity){
@@ -28,6 +29,7 @@ public class Database {
         transaction.begin();
         em.remove(entity);
         transaction.commit();
+        
     }
 
     public void executeUpdate(EntityManager em, Object entity){
@@ -36,6 +38,7 @@ public class Database {
         transaction.begin();
         em.merge(entity);
         transaction.commit();
+        
     }
     
 }

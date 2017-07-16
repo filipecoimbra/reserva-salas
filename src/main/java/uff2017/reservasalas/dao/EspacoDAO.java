@@ -21,7 +21,7 @@ public class EspacoDAO {
 
     private EntityManagerFactory factory = Persistence
             .createEntityManagerFactory("Espaco");
-    private EntityManager em = factory.createEntityManager();
+    private EntityManager em = factory.createEntityManager();   
 
     public Espaco getEspaco(String nomeEspaco, String senha) {
 
@@ -43,8 +43,7 @@ public class EspacoDAO {
         try {
             ArrayList<Espaco> espaco = (ArrayList<Espaco>) em.createQuery("SELECT e from Espaco e where ativo=1").getResultList();
 //                    .setParameter("name", nomeEspaco)
-//                    .setParameter("senha", senha).getSingleResult();
-
+//                    .setParameter("senha", senha).getSingleResult();            
             return espaco;
         } catch (NoResultException e) {
             return null;

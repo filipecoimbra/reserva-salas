@@ -13,7 +13,7 @@
         <h:form>
             <h:dataTable value="#{listaEspacoBean.listaEspacos}" var="espaco" border="1">            
                 <h:column>
-                    <f:facet name="header">Id Espaco</f:facet>
+                    <f:facet name="header">Codigo</f:facet>
                     <h:outputLabel value="#{espaco.idEspaco}">
                         <f:param name="id" value="#{espaco.idEspaco}" />
                     </h:outputLabel> 
@@ -30,14 +30,27 @@
                         <f:param name="id" value="#{espaco.localidade}" />
                     </h:outputLabel>
                 </h:column>
-                <h:column>                
-                    <h:commandLink value="Alterar" action="#{listaEspacoBean.goToEditPage}" >    
-                        <f:param name="id" value="#{espaco.idEspaco}" />
-                    </h:commandLink>
+                <h:column>
+                    <h:commandButton value="Editar" action="#{listaEspacoBean.edit(espaco)}" />
                 </h:column>
-                
+                <h:column>
+                    <h:commandButton value="Deletar" action="#{listaEspacoBean.delete(espaco)}" />
+                </h:column>
+
             </h:dataTable>
         </h:form>
+
+        <h:panelGroup rendered="#{listaEspacoBean.edit}">
+            <h3>Alterar espaco #{listaEspacoBean.espaco.idEspaco}</h3>
+            <h:form>
+                <p>Name: <h:inputText value="#{listaEspacoBean.espaco.capacidade}" /></p>
+                <p>Localidade: <h:inputText value="#{listaEspacoBean.espaco.localidade}" /></p>
+                <p>
+                    <h:commandButton value="Salvar" action="#{listaEspacoBean.saveEdit}" />
+                    <h:commandButton value="Cancelar" action="#{listaEspacoBean.cancelEdit}" />
+                </p>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>
 

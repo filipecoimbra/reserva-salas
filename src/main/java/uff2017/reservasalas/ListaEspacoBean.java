@@ -26,31 +26,69 @@ public class ListaEspacoBean implements Serializable {
 
     private ArrayList<Espaco> listaEspacos = new ArrayList<Espaco>();
     private EspacoDAO espacoDAO = new EspacoDAO();
-    private int editId;
+    private Espaco espaco = new Espaco();
+    private Espaco espacoBeforeEdit = null;
+    private boolean edit;
     
     public void onload() {
         listaEspaco();
     }
 
-    public int getEditId() {
-        return editId;
-    }
-
-    public void setEditId(int editId) {
-        this.editId = editId;
-    }
-
-    public String goToEditPage(){                                
-        editId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
-        return "EditaEspaco";
+    public void listaEspaco() {        
+        listaEspacos = espacoDAO.listaEspacos();        
+    }  
+    
+    public void edit(Espaco item) {
+        espacoBeforeEdit = item.clone();
+        this.espaco = item;
+        edit = true;
     }
     
-    public void listaEspaco() {
-        
-        listaEspacos = espacoDAO.listaEspacos();
-        
+    public void cancelEdit() {
+        this.espaco.restore(espacoBeforeEdit);
+        this.espaco = new Espaco();
+        edit = false;
+    }
+    
+    public void saveEdit() {
+        // DAO save the edit
+        espacoDAO.updateEspaco(espaco);
+        this.espaco = new Espaco();
+        edit = false;
+    }
+    
+    public void delete(Espaco espaco) {
+        espacoDAO.deletarEspaco(espaco);
+        listaEspaco();
+    }
+    
+
+    public Espaco getEspaco() {
+        return espaco;
     }
 
+    public void setEspaco(Espaco espaco) {
+        this.espaco = espaco;
+    }
+
+    public Espaco getEspacoBeforeEdit() {
+        return espacoBeforeEdit;
+    }
+
+    public void setEspacoBeforeEdit(Espaco espacoBeforeEdit) {
+        this.espacoBeforeEdit = espacoBeforeEdit;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    
+    
     public ArrayList<Espaco> getListaEspacos() {
         return listaEspacos;
     }
