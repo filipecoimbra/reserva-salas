@@ -1,16 +1,62 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista de Evento</title>
+    </h:head>
+    <h:body>
+        <div class="title"> Lista de Eventos </div>
+        <hr></hr>
+        <f:metadata>           
+            <f:viewAction action="#{listaEventoBean.onload}" />
+        </f:metadata>
+        <h:form>
+            <h:dataTable value="#{listaEventoBean.listaEventos}" var="evento" border="1">            
+                <h:column>
+                    <f:facet name="header">Codigo</f:facet>
+                    <h:outputLabel value="#{evento.idEvento}">                        
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputLabel value="#{evento.nome}">                        
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Descricao</f:facet>
+                    <h:outputLabel value="#{evento.descricao}">                        
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Inicio</f:facet>
+                    <h:outputLabel value="#{evento.horaInicio}">                        
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Final</f:facet>
+                    <h:outputLabel value="#{evento.horaFim}">                        
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Data</f:facet>
+                    <h:outputLabel value="#{evento.data}">   
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Limite Participantes</f:facet>
+                    <h:outputLabel value="#{evento.maxParticipantes}">                        
+                    </h:outputLabel> 
+                </h:column>                
+                <h:column>
+                    <h:commandButton value="Deletar" action="#{listaEventoBean.delete(evento)}" />
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
 </html>
+

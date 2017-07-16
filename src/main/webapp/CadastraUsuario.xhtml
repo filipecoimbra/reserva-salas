@@ -7,28 +7,29 @@
         <title>Cadastro de Usuario</title>
     </h:head>
     <h:body>
-        <h:form>                      
-                        
+        <h:form>         
+            <div class="title"> Cadastro de Usuarios </div>
+            <hr></hr>
             Nome: <h:inputText value="#{cadastraUsuarioBean.usuario.nome}" /><br></br>
             Login: <h:inputText value="#{cadastraUsuarioBean.usuario.login}" /><br></br>
             Senha: <h:inputSecret  value="#{cadastraUsuarioBean.usuario.senha}" /><br></br>
-            
+
             Perfil de Usuario:
-            <h:selectOneMenu value="#{cadastraUsuarioBean.usuario.perfilUsuario.idPerfilUsuario}"> 
+            <h:selectOneMenu value="#{cadastraUsuarioBean.idPerfil}"> 
                 <f:selectItem itemValue="1" itemLabel="Administrador" /> 
                 <f:selectItem itemValue="2" itemLabel="Organizador" /> 
                 <f:selectItem itemValue="3" itemLabel="Participante" />                         
             </h:selectOneMenu><br></br>
-            
+
             Tipo de Usuario:
-            <h:selectOneMenu value="#{cadastraUsuarioBean.usuario.perfilUsuario.idPerfilUsuario}"> 
-                <f:selectItem itemValue="1" itemLabel="Generico" /> 
-                <f:selectItem itemValue="2" itemLabel="Funcionario IC" /> 
-                <f:selectItem itemValue="3" itemLabel="Aluno graduacao" /> 
-                <f:selectItem itemValue="4" itemLabel="Aluno Pos-graduacao" /> 
-                <f:selectItem itemValue="5" itemLabel="Docente" />
+            <h:selectOneMenu value="#{cadastraUsuarioBean.idTipo}">                 
+                <f:selectItem itemValue="1" itemLabel="Aluno graduacao" /> 
+                <f:selectItem itemValue="2" itemLabel="Aluno Pos-graduacao" /> 
+                <f:selectItem itemValue="3" itemLabel="Docente" />
             </h:selectOneMenu><br></br>
-            
+
+
+            <h:commandButton value="Cadastrar" action="#{cadastraUsuarioBean.cadastraUsuario()}" />
         </h:form>
 
     </h:body>

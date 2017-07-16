@@ -5,12 +5,15 @@
  */
 package uff2017.reservasalas.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,7 +22,7 @@ import javax.persistence.OneToMany;
  * @author fabri
  */
 @Entity
-public class Evento {
+public class Evento implements Serializable {
 
     @Id
     @GeneratedValue
@@ -44,13 +47,22 @@ public class Evento {
     private Espaco espaco;
     @Column
     boolean ativo;
-    //private ArrayList<TipoUsuario> tiposUsuarioPermitidos;
+    @ManyToMany
+    private List<TipoUsuario> tiposUsuarioPermitidos;
 
     //private TipoEvento tipoEvento;
     public Evento() {
-
+        
     }
 
+    public List<TipoUsuario> getTiposUsuarioPermitidos() {
+        return tiposUsuarioPermitidos;
+    }
+
+    public void setTiposUsuarioPermitidos(List<TipoUsuario> tiposUsuarioPermitidos) {
+        this.tiposUsuarioPermitidos = tiposUsuarioPermitidos;
+    }
+        
     public Espaco getEspaco() {
         return espaco;
     }

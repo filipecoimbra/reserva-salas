@@ -22,14 +22,13 @@ public class PerfilUsuarioDAO {
             .createEntityManagerFactory("PerfilUsuario");
     private EntityManager em = factory.createEntityManager();
 
-    public PerfilUsuario getPerfilUsuario(String nomePerfilUsuario, String senha) {
+    public PerfilUsuario getPerfilUsuario(int id) {
 
         try {
             PerfilUsuario perfilusuario = (PerfilUsuario) em
                     .createQuery(
-                            "SELECT u from PerfilUsuario u where u.nomePerfilUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomePerfilUsuario)
-                    .setParameter("senha", senha).getSingleResult();
+                            "SELECT u from PerfilUsuario u where u.idPerfilUsuario = :id")
+                    .setParameter("id", id).getSingleResult();
 
             return perfilusuario;
         } catch (NoResultException e) {

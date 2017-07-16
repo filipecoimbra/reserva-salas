@@ -8,7 +8,7 @@
     </h:head>
     <h:body>
         <h:form>                        
-            Nome <h:inputText value="#{cadastraEventoBean.evento.nome}" /> <br></br>
+            Nome: <h:inputText value="#{cadastraEventoBean.evento.nome}" /> <br></br>
             Descricao: <h:inputText value="#{cadastraEventoBean.evento.descricao}" /><br></br>
             Hora de Inicio: <h:inputText value="#{cadastraEventoBean.evento.horaInicio}"  /><br></br>
             Hora de Fim: <h:inputText value="#{cadastraEventoBean.evento.horaFim}" /><br></br>
@@ -17,10 +17,15 @@
             </h:inputText><br></br>
             Número máximo de participantes: <h:inputText value="#{cadastraEventoBean.evento.maxParticipantes}" /><br></br>
 
-
+            Tipo de usuarios aceitos:<br></br>
+            <h:selectBooleanCheckbox value="#{cadastraEventoBean.alunograduacao}" /> Alunos Graduacao<br></br>
+            <h:selectBooleanCheckbox value="#{cadastraEventoBean.alunopos}" /> Alunos Pos-Graduacao<br></br>
+            <h:selectBooleanCheckbox value="#{cadastraEventoBean.docentes}" /> Docentes<br></br>            
 
 
             <h:commandButton value="Cadastrar" action="#{cadastraEventoBean.cadastraEvento()}" />
+            
+            <h:messages style="color:red;" />
         </h:form>
 
     </h:body>

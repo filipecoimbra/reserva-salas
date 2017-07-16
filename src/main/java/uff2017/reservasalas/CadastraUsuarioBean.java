@@ -7,7 +7,10 @@ package uff2017.reservasalas;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import uff2017.reservasalas.dao.PerfilUsuarioDAO;
 import uff2017.reservasalas.dao.UsuarioDAO;
+import uff2017.reservasalas.model.PerfilUsuario;
+import uff2017.reservasalas.model.TipoUsuario;
 import uff2017.reservasalas.model.Usuario;
 
 /**
@@ -18,12 +21,34 @@ import uff2017.reservasalas.model.Usuario;
 @RequestScoped
 public class CadastraUsuarioBean {
 
-    Usuario usuario = new Usuario();
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
-    
-    
-    public void cadastraUsuario() {
+    private Usuario usuario = new Usuario();
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private int idPerfil;
+    private int idTipo;   
 
+    public void cadastraUsuario() {
+        usuario.setPerfilUsuario(new PerfilUsuario());
+        usuario.setTipoUsuario(new TipoUsuario());
+        usuario.getTipoUsuario().setIdTipoUsuario(idTipo);
+        usuario.getPerfilUsuario().setIdPerfilUsuario(idPerfil);
+        usuarioDAO.cadastrarUsuario(usuario);
+
+    }
+
+    public int getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(int idPerfil) {
+        this.idPerfil = idPerfil;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
     }
 
     public Usuario getUsuario() {
@@ -41,7 +66,5 @@ public class CadastraUsuarioBean {
     public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
-    
-    
-    
+
 }

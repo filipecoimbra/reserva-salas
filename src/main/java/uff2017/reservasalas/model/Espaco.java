@@ -5,6 +5,7 @@
  */
 package uff2017.reservasalas.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  * @author fabri
  */
 @Entity
-public class Espaco {
+public class Espaco implements Serializable {
 
     @Id
     @GeneratedValue

@@ -5,11 +5,13 @@
  */
 package uff2017.reservasalas.dao;
 
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
+import uff2017.reservasalas.model.Espaco;
 import uff2017.reservasalas.model.Usuario;
 
 /**
@@ -26,7 +28,10 @@ public class UsuarioDAO {
         try {
             Usuario usuario = (Usuario) em
                     .createQuery(
-                            "SELECT u from Usuario u where u.nomeUsuario = :name and u.senha = :senha")
+                            "SELECT u from Usuario u "
+                                    + "inner join PerfilUsuario p on p.idPerfilUsuario = u.perfilUsuario_idPerfilUsuario"
+                                    + "inner join TipoUsuario t on t.idTipousuario = u.tipoUsuario_idTipoUsuario"
+                                    + " where u.nomeUsuario = :name and u.senha = :senha")
                     .setParameter("name", nomeUsuario)
                     .setParameter("senha", senha).getSingleResult();
 
@@ -36,7 +41,22 @@ public class UsuarioDAO {
         }
     }
 
+    public ArrayList<Usuario> listaUsuariosAtivos() {
+
+        try {
+            ArrayList<Usuario> usuarios = (ArrayList<Usuario>) em.createQuery(
+                            "SELECT u from Usuario u "
+                                    + " inner join u.perfilUsuario as perf "
+                                    + " inner join u.tipoUsuario as tipo "
+                                    + " where u.ativo = 1").getResultList();
+            return usuarios;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
     public void cadastrarUsuario(Usuario usuario) {
+        usuario.setAtivo(true);
         Database db = new Database();
         db.executePersist(em, usuario);
 
@@ -48,7 +68,8 @@ public class UsuarioDAO {
     }
 
     public void deletarUsuario(Usuario usuario) {
+        usuario.setAtivo(false);
         Database db = new Database();
-        db.executeDelete(em, usuario);
+        db.executeUpdate(em, usuario);
     }
 }

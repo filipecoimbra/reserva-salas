@@ -5,6 +5,7 @@
  */
 package uff2017.reservasalas.dao;
 
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -18,39 +19,88 @@ import uff2017.reservasalas.model.Evento;
  */
 public class EventoDAO {
 
-    private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("Evento");
-    private EntityManager em = factory.createEntityManager();
-
-    public Evento getEvento(String nomeEvento, String senha) {
-
+    public Evento getEvento(int id) {
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("Evento");
+        EntityManager em = factory.createEntityManager();
         try {
             Evento evento = (Evento) em
                     .createQuery(
-                            "SELECT u from Evento u where u.nomeEvento = :name and u.senha = :senha")
-                    .setParameter("name", nomeEvento)
-                    .setParameter("senha", senha).getSingleResult();
+                            "SELECT u from Evento u where idEvento = :id")
+                    .setParameter("id", id).getSingleResult();
 
             return evento;
         } catch (NoResultException e) {
             return null;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
         }
     }
 
     public void cadastrarEvento(Evento evento) {
-        Database db = new Database();
-        db.executePersist(em, evento);
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("Evento");
+        EntityManager em = factory.createEntityManager();
+        try {
+
+            Database db = new Database();
+            db.executePersist(em, evento);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
+        }
 
     }
 
     public void updateEvento(Evento evento) {
-        Database db = new Database();
-        db.executeUpdate(em, evento);
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("Evento");
+        try {
+            EntityManager em = factory.createEntityManager();
+            Database db = new Database();
+            db.executeUpdate(em, evento);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
+        }
+
     }
 
     public void deletarEvento(Evento evento) {
-        Database db = new Database();
-        db.executeDelete(em, evento);
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("Evento");
+        EntityManager em = factory.createEntityManager();
+        try {
+            evento.setAtivo(false);
+            Database db = new Database();
+            db.executeUpdate(em, evento);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
+        }
+    }
+
+    public ArrayList<Evento> listarEventosAprovados() {
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("Evento");
+        EntityManager em = factory.createEntityManager();
+        try {
+            ArrayList<Evento> eventos = (ArrayList<Evento>) em.createQuery("SELECT e from Evento e where ativo=1 and isaprovado=1").getResultList();
+//                    .setParameter("name", nomeEspaco)
+//                    .setParameter("senha", senha).getSingleResult();            
+            return eventos;
+        } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
+        }
     }
 
 }

@@ -12,6 +12,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
 import uff2017.reservasalas.model.Espaco;
+import uff2017.reservasalas.model.Evento;
 
 /**
  *
@@ -21,20 +22,23 @@ public class EspacoDAO {
 
     private EntityManagerFactory factory = Persistence
             .createEntityManagerFactory("Espaco");
-    private EntityManager em = factory.createEntityManager();   
+    private EntityManager em = factory.createEntityManager();
 
-    public Espaco getEspaco(String nomeEspaco, String senha) {
+    public Espaco getEspaco(int id) {
 
         try {
             Espaco espaco = (Espaco) em
                     .createQuery(
-                            "SELECT u from Espaco u where u.nomeEspaco = :name and u.senha = :senha")
-                    .setParameter("name", nomeEspaco)
-                    .setParameter("senha", senha).getSingleResult();
+                            "SELECT u from Espaco u where espaco_id = :id")
+                    .setParameter("id", id).getSingleResult();
 
             return espaco;
         } catch (NoResultException e) {
             return null;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            factory.close();
         }
     }
 
@@ -49,8 +53,7 @@ public class EspacoDAO {
             return null;
         }
     }
-    
-    
+
     public void cadastrarEspaco(Espaco espaco) {
         espaco.setAtivo(true);
         Database db = new Database();
@@ -61,9 +64,9 @@ public class EspacoDAO {
     public void updateEspaco(Espaco espaco) {
         espaco.setAtivo(true);
         Database db = new Database();
-        db.executeUpdate(em, espaco);        
+        db.executeUpdate(em, espaco);
     }
-    
+
     public void deletarEspaco(Espaco espaco) {
         Database db = new Database();
         //db.executeDelete(em, espaco);

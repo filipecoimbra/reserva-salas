@@ -7,6 +7,8 @@
         <title>Lista de Espacos</title>
     </h:head>
     <h:body>
+        <div class="title"> Lista de Espacos </div>
+        <hr></hr>
         <f:metadata>           
             <f:viewAction action="#{listaEspacoBean.onload}" />
         </f:metadata>
@@ -14,20 +16,17 @@
             <h:dataTable value="#{listaEspacoBean.listaEspacos}" var="espaco" border="1">            
                 <h:column>
                     <f:facet name="header">Codigo</f:facet>
-                    <h:outputLabel value="#{espaco.idEspaco}">
-                        <f:param name="id" value="#{espaco.idEspaco}" />
+                    <h:outputLabel value="#{espaco.idEspaco}">                       
                     </h:outputLabel> 
                 </h:column>
                 <h:column>
                     <f:facet name="header">Capacidade</f:facet>
-                    <h:outputLabel value="#{espaco.capacidade}">
-                        <f:param name="id" value="#{espaco.capacidade}" />
+                    <h:outputLabel value="#{espaco.capacidade}">                        
                     </h:outputLabel>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Localidade</f:facet>
-                    <h:outputLabel value="#{espaco.localidade}">
-                        <f:param name="id" value="#{espaco.localidade}" />
+                    <h:outputLabel value="#{espaco.localidade}">                        
                     </h:outputLabel>
                 </h:column>
                 <h:column>

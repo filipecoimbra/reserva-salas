@@ -51,4 +51,61 @@
    
         </properties>
     </persistence-unit>
+    
+    <persistence-unit name="TipoUsuario" transaction-type="RESOURCE_LOCAL">       
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>uff2017.reservasalas.model.TipoUsuario</class>   
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/teste" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />   
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="Usuario" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>uff2017.reservasalas.model.Usuario</class>   
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/teste" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>    
+    <persistence-unit name="PerfilUsuario" transaction-type="RESOURCE_LOCAL">        
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>           
+        <class>uff2017.reservasalas.model.PerfilUsuario</class>   
+        <properties>                          
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/teste" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="1234" />               
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />               
+            <property name="hibernate.hbm2ddl.auto" value="update" />   
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="Solicitacao" transaction-type="RESOURCE_LOCAL">       
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>uff2017.reservasalas.model.Solicitacao</class>   
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/teste" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />   
+        </properties>
+    </persistence-unit>
 </persistence>

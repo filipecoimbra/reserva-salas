@@ -29,39 +29,40 @@ public class ListaEspacoBean implements Serializable {
     private Espaco espaco = new Espaco();
     private Espaco espacoBeforeEdit = null;
     private boolean edit;
-    
+    private int idPerfil;
+    private int idTipo;
+
     public void onload() {
         listaEspaco();
     }
 
-    public void listaEspaco() {        
-        listaEspacos = espacoDAO.listaEspacos();        
-    }  
-    
+    public void listaEspaco() {
+        listaEspacos = espacoDAO.listaEspacos();
+    }
+
     public void edit(Espaco item) {
         espacoBeforeEdit = item.clone();
         this.espaco = item;
         edit = true;
     }
-    
+
     public void cancelEdit() {
         this.espaco.restore(espacoBeforeEdit);
         this.espaco = new Espaco();
         edit = false;
     }
-    
+
     public void saveEdit() {
         // DAO save the edit
         espacoDAO.updateEspaco(espaco);
         this.espaco = new Espaco();
         edit = false;
     }
-    
+
     public void delete(Espaco espaco) {
         espacoDAO.deletarEspaco(espaco);
         listaEspaco();
     }
-    
 
     public Espaco getEspaco() {
         return espaco;
@@ -87,8 +88,6 @@ public class ListaEspacoBean implements Serializable {
         this.edit = edit;
     }
 
-    
-    
     public ArrayList<Espaco> getListaEspacos() {
         return listaEspacos;
     }
@@ -96,7 +95,23 @@ public class ListaEspacoBean implements Serializable {
     public void setListaEspacos(ArrayList<Espaco> listaEspacos) {
         this.listaEspacos = listaEspacos;
     }
-    
-    
 
+    public int getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(int idPerfil) {
+        this.idPerfil = idPerfil;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    
+    
 }

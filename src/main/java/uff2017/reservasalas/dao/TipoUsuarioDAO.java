@@ -22,14 +22,13 @@ public class TipoUsuarioDAO {
             .createEntityManagerFactory("TipoUsuario");
     private EntityManager em = factory.createEntityManager();
 
-    public TipoUsuario getTipoUsuario(String nomeTipoUsuario, String senha) {
+    public TipoUsuario getTipoUsuario(int id) {
 
         try {
             TipoUsuario tipoUsuario = (TipoUsuario) em
                     .createQuery(
-                            "SELECT u from TipoUsuario u where u.nomeTipoUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeTipoUsuario)
-                    .setParameter("senha", senha).getSingleResult();
+                            "SELECT u from TipoUsuario u where u.idTipoUsuario = :id")
+                    .setParameter("id", id).getSingleResult();
 
             return tipoUsuario;
         } catch (NoResultException e) {
