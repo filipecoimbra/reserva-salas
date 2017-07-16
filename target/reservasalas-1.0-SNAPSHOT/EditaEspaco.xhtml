@@ -7,7 +7,11 @@
         <title>Edicao de Espaco</title>
     </h:head>
     <h:body>
-        <h:form>                        
+        <f:metadata>           
+            <f:viewAction action="#{editaEspacoBean.onload}" />
+        </f:metadata>        
+        <h:form>            
+            Identificador: <h:inputText value="#{listaEspacoBean.editId}" /><br></br>
             Capacidade: <h:inputText value="#{editaEspacoBean.espaco.capacidade}" /><br></br>
             Localidade: <h:inputText value="#{editaEspacoBean.espaco.localidade}" /><br></br>
 

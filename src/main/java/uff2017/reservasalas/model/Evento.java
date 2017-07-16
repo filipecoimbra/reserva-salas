@@ -119,14 +119,7 @@ public class Evento {
         this.isAprovado = isAprovado;
     }
 
-    public int getIdEspaco() {
-        return idEspaco;
-    }
 
-    public void setIdEspaco(int idEspaco) {
-        this.idEspaco = idEspaco;
-    }
-    
     
     
 }

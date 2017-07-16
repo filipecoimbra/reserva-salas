@@ -17,15 +17,17 @@ import javax.persistence.Id;
  */
 @Entity
 public class Espaco {
-    
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private int idEspaco;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private int capacidade;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String localidade;
-    
+    @Column(nullable = false)
+    private boolean ativo;
+
     //nao sei como faz coluna assim
 //    private ArrayList<Recurso> recursos;
 //
@@ -36,9 +38,15 @@ public class Espaco {
 //    public void setRecursos(ArrayList<Recurso> recursos) {
 //        this.recursos = recursos;
 //    }
-    
-    
-    public Espaco() {      
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public Espaco() {
 
     }
 
@@ -65,5 +73,5 @@ public class Espaco {
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
-    
+
 }

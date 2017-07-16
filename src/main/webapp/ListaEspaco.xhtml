@@ -10,28 +10,34 @@
         <f:metadata>           
             <f:viewAction action="#{listaEspacoBean.onload}" />
         </f:metadata>
-
-        <h:dataTable value="#{listaEspacoBean.listaEspacos}" var="espaco" border="1">            
-            <h:column>
-                <f:facet name="header">Id Espaco</f:facet>
-                <h:outputLabel value="#{espaco.idEspaco}">
-                    <f:param name="id" value="#{espaco.idEspaco}" />
-                </h:outputLabel> 
-            </h:column>
-            <h:column>
-                <f:facet name="header">Capacidade</f:facet>
-                <h:outputLabel value="#{espaco.capacidade}">
-                    <f:param name="id" value="#{espaco.capacidade}" />
-                </h:outputLabel>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Localidade</f:facet>
-                <h:outputLabel value="#{espaco.localidade}">
-                    <f:param name="id" value="#{espaco.localidade}" />
-                </h:outputLabel>
-            </h:column>
-        </h:dataTable>
-
+        <h:form>
+            <h:dataTable value="#{listaEspacoBean.listaEspacos}" var="espaco" border="1">            
+                <h:column>
+                    <f:facet name="header">Id Espaco</f:facet>
+                    <h:outputLabel value="#{espaco.idEspaco}">
+                        <f:param name="id" value="#{espaco.idEspaco}" />
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Capacidade</f:facet>
+                    <h:outputLabel value="#{espaco.capacidade}">
+                        <f:param name="id" value="#{espaco.capacidade}" />
+                    </h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Localidade</f:facet>
+                    <h:outputLabel value="#{espaco.localidade}">
+                        <f:param name="id" value="#{espaco.localidade}" />
+                    </h:outputLabel>
+                </h:column>
+                <h:column>                
+                    <h:commandLink value="Alterar" action="#{listaEspacoBean.goToEditPage}" >    
+                        <f:param name="id" value="#{espaco.idEspaco}" />
+                    </h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
     </h:body>
 </html>
 

@@ -26,11 +26,29 @@ public class EditaEspacoBean {
     }
 
     public void editaEspaco() {
-
-    }
+        espacoDAO.updateEspaco(espaco);
+    } 
 
     public void excluiEspaco() {
-
+        espacoDAO.deletarEspaco(espaco);
     }
+
+    public Espaco getEspaco() {
+        return espaco;
+    }
+
+    public void setEspaco(Espaco espaco) {
+        this.espaco = espaco;
+    }
+
+    public EspacoDAO getEspacoDAO() {
+        return espacoDAO;
+    }
+
+    public void setEspacoDAO(EspacoDAO espacoDAO) {
+        this.espacoDAO = espacoDAO;
+    }
+    
+    
 
 }

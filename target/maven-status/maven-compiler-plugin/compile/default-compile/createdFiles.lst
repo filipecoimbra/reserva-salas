@@ -7,6 +7,7 @@ uff2017\reservasalas\dao\SolicitacaoDAO.class
 uff2017\reservasalas\EditaEspacoBean.class
 uff2017\reservasalas\model\Recurso.class
 uff2017\reservasalas\ListaEspacoBean.class
+uff2017\reservasalas\model\Espaco_.class
 uff2017\reservasalas\AprovaSolicitacaoBean.class
 uff2017\reservasalas\model\TipoEvento.class
 uff2017\reservasalas\model\TipoUsuario.class
@@ -23,4 +24,5 @@ uff2017\reservasalas\ListaUsuarioBean.class
 uff2017\reservasalas\model\Espaco.class
 uff2017\reservasalas\EditaUsuarioBean.class
 uff2017\reservasalas\CadastroEspacoBean.class
+uff2017\reservasalas\Database.class
 uff2017\reservasalas\ListaSolicitacaoBean.class

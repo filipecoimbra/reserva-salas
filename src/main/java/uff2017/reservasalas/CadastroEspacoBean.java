@@ -7,10 +7,6 @@ package uff2017.reservasalas;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import uff2017.reservasalas.dao.EspacoDAO;
 import uff2017.reservasalas.model.Espaco;
 
@@ -24,6 +20,14 @@ public class CadastroEspacoBean {
 
     private EspacoDAO espacoDAO = new EspacoDAO();
     private Espaco espaco = new Espaco();
+    
+    public EspacoDAO getEspacoDAO() {
+        return espacoDAO;
+    }
+
+    public void setEspacoDAO(EspacoDAO espacoDAO) {
+        this.espacoDAO = espacoDAO;
+    }
 
     public Espaco getEspaco() {
         return espaco;
@@ -33,9 +37,7 @@ public class CadastroEspacoBean {
         this.espaco = espaco;
     }
 
-    public void cadastraEspaco() throws Exception {
-        espaco.setCapacidade(666);
-        espaco.setLocalidade("kid animal");
+    public void cadastraEspaco() throws Exception {        
         espacoDAO.cadastrarEspaco(espaco);
     }
 

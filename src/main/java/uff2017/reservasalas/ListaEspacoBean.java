@@ -5,9 +5,15 @@
  */
 package uff2017.reservasalas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import uff2017.reservasalas.dao.EspacoDAO;
 import uff2017.reservasalas.model.Espaco;
 
 /**
@@ -15,27 +21,33 @@ import uff2017.reservasalas.model.Espaco;
  * @author fabri
  */
 @Named
-@RequestScoped
-public class ListaEspacoBean {
+@SessionScoped
+public class ListaEspacoBean implements Serializable {
 
-    ArrayList<Espaco> listaEspacos = new ArrayList<Espaco>();
+    private ArrayList<Espaco> listaEspacos = new ArrayList<Espaco>();
+    private EspacoDAO espacoDAO = new EspacoDAO();
+    private int editId;
     
     public void onload() {
         listaEspaco();
     }
 
+    public int getEditId() {
+        return editId;
+    }
+
+    public void setEditId(int editId) {
+        this.editId = editId;
+    }
+
+    public String goToEditPage(){                                
+        editId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+        return "EditaEspaco";
+    }
+    
     public void listaEspaco() {
         
-        Espaco teste1 = new Espaco();
-        teste1.setIdEspaco(1); teste1.setCapacidade(2); teste1.setLocalidade("teste loco");
-        Espaco teste2 = new Espaco();
-        teste2.setIdEspaco(2); teste2.setCapacidade(9); teste2.setLocalidade("teste locgfdo");
-        Espaco teste3 = new Espaco();
-        teste3.setIdEspaco(15); teste3.setCapacidade(6); teste3.setLocalidade("teste locot");
-        
-        listaEspacos.add(teste1);
-        listaEspacos.add(teste2);
-        listaEspacos.add(teste3);
+        listaEspacos = espacoDAO.listaEspacos();
         
     }
 
