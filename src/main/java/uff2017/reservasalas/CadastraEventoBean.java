@@ -53,37 +53,13 @@ public class CadastraEventoBean {
         }
 
         //TODO JPA Insert
-        if (validaHora(evento.getHoraInicio()) && validaHora(evento.getHoraFim())) {
-            eventoDAO.cadastrarEvento(evento);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
+        if (Util.validaHora(evento.getHoraInicio()) && Util.validaHora(evento.getHoraFim())) {
+            if (Util.hora1MaiorQue2(evento.getHoraInicio(), evento.getHoraFim()) == false) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
+            }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados invalidos."));
         }
-    }
-
-    private boolean validaHora(String horario) {
-
-        try {
-
-            int hora = Integer.parseInt(horario.substring(0, 2));
-            if (hora > 24 || hora < 0) {
-                return false;
-            }
-
-            int minutos = Integer.parseInt(horario.substring(3, 5));
-            if (minutos > 60 || minutos < 0) {
-                return false;
-            }
-
-            if (!(horario.substring(2, 3).equals(":"))) {
-                return false;
-            }
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-
     }
 
     public Evento getEvento() {
