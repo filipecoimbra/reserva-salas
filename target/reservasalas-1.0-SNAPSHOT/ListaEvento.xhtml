@@ -46,16 +46,43 @@
                     </h:outputLabel> 
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Localidade (Espaco)</f:facet>
+                    <h:outputLabel value="#{evento.espaco.localidade}">   
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                    </h:outputLabel> 
+                </h:column>
+                <h:column>
                     <f:facet name="header">Limite Participantes</f:facet>
                     <h:outputLabel value="#{evento.maxParticipantes}">                        
                     </h:outputLabel> 
-                </h:column>                
+                </h:column>    
+                <h:column>
+                    <h:commandButton value="Inscrever-se" action="#{listaEventoBean.inscrever(evento)}" />
+                </h:column>
                 <h:column>
                     <h:commandButton value="Deletar" action="#{listaEventoBean.delete(evento)}" />
                 </h:column>
 
             </h:dataTable>
+            
+            <h:messages style="color:red;" />
         </h:form>
+
+        <h:panelGroup rendered="#{listaEventoBean.edit}">
+            <h3>Increver-se em evento #{listaEventoBean.evento.idEvento} - #{listaEventoBean.evento.nome} </h3>
+            <h:form>
+                <p>Name: <h:outputLabel value="#{listaEventoBean.evento.nome}" /></p>
+                <p>Localidade: <h:outputLabel value="#{listaEventoBean.evento.descricao}" /></p>
+                <p>Maximo de participantes: <h:outputLabel value="#{listaEventoBean.evento.maxParticipantes}" /></p>
+                <p>Usuario: <h:inputText value="#{listaEventoBean.idUsuario}" /></p>
+                <p>
+                    <h:commandButton value="Inscrever-se" action="#{listaEventoBean.saveInscrever}" />
+                    <h:commandButton value="Cancelar" action="#{listaEventoBean.cancelInscrever}" />
+                </p>
+            </h:form>
+        </h:panelGroup>
+        
+        <h:messages style="color:red;" />
 
     </h:body>
 </html>

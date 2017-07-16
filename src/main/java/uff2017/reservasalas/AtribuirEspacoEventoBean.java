@@ -34,9 +34,19 @@ public class AtribuirEspacoEventoBean {
         try {
             evento = eventodao.getEvento(eventoAssociado);
             espaco = espacodao.getEspaco(espacoAssociado);
-            evento.setEspaco(espaco);
-            eventodao.updateEvento(evento);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
+            if (evento.getMaxParticipantes() <= espaco.getCapacidade()) {
+                evento.setEspaco(espaco);
+                eventodao.updateEvento(evento);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
+            } else {
+
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage("O espaço "
+                                + espaco.getLocalidade()
+                                + " tem apenas " + espaco.getCapacidade()
+                                + " lugares. É necessário um espaco de ao menos "
+                                + evento.getMaxParticipantes() + " lugares para este evento."));
+            }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ocorreu um erro ao cadastrar: " + e.getMessage()));
         }

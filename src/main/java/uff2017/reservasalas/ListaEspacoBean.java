@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -57,10 +58,12 @@ public class ListaEspacoBean implements Serializable {
         espacoDAO.updateEspaco(espaco);
         this.espaco = new Espaco();
         edit = false;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Editado com sucesso."));
     }
 
     public void delete(Espaco espaco) {
         espacoDAO.deletarEspaco(espaco);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apagado com sucesso."));
         listaEspaco();
     }
 

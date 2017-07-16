@@ -5,18 +5,21 @@
  */
 package uff2017.reservasalas.dao;
 
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import uff2017.reservasalas.Database;
 import uff2017.reservasalas.model.Solicitacao;
+import uff2017.reservasalas.model.Usuario;
 
 /**
  *
  * @author fabri
  */
 public class SolicitacaoDAO {
+
     private EntityManagerFactory factory = Persistence
             .createEntityManagerFactory("Solicitacao");
     private EntityManager em = factory.createEntityManager();
@@ -31,6 +34,20 @@ public class SolicitacaoDAO {
                     .setParameter("senha", senha).getSingleResult();
 
             return solicitacao;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public ArrayList<Solicitacao> listaSolicitacoesAtivas() {
+
+        try {
+            ArrayList<Solicitacao> solicitacoes = (ArrayList<Solicitacao>) em.createQuery(
+                    "SELECT s from Solicitacao s "
+                    + " inner join s.evento as eve "
+                    + " inner join s.usuario as usu "
+                    + " where eve.isAprovado = 0 and eve.ativo = 1").getResultList();
+            return solicitacoes;
         } catch (NoResultException e) {
             return null;
         }

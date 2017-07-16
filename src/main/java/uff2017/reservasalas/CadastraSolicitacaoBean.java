@@ -8,6 +8,8 @@ package uff2017.reservasalas;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import uff2017.reservasalas.dao.EventoDAO;
 import uff2017.reservasalas.dao.SolicitacaoDAO;
@@ -55,12 +57,13 @@ public class CadastraSolicitacaoBean {
             evento.getTiposUsuarioPermitidos().add(docente);
         }
                 
+        evento.setIsAprovado(false);
         eventoDAO.cadastrarEvento(evento);      
         solicitacao.setUsuario(usuario);
         solicitacao.setEvento(evento);
         solicitacao.setData(new Date());
         solicitacaoDAO.cadastrarSolicitacao(solicitacao);
-        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
     }
 
     public Solicitacao getSolicitacao() {

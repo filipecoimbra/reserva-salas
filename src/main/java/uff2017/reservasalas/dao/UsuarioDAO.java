@@ -23,18 +23,17 @@ public class UsuarioDAO {
             .createEntityManagerFactory("Usuario");
     private EntityManager em = factory.createEntityManager();
 
-    public Usuario getUsuario(String nomeUsuario, String senha) {
+    public Usuario getUsuario(int id) {
 
         try {
             Usuario usuario = (Usuario) em
                     .createQuery(
                             "SELECT u from Usuario u "
-                                    + "inner join PerfilUsuario p on p.idPerfilUsuario = u.perfilUsuario_idPerfilUsuario"
-                                    + "inner join TipoUsuario t on t.idTipousuario = u.tipoUsuario_idTipoUsuario"
-                                    + " where u.nomeUsuario = :name and u.senha = :senha")
-                    .setParameter("name", nomeUsuario)
-                    .setParameter("senha", senha).getSingleResult();
-
+                                    + " inner join u.perfilUsuario as perf "
+                                    + " inner join u.tipoUsuario as tipo "
+                                    + " where u.ativo = 1 and u.idUsuario = :id")
+                    .setParameter("id", id).getSingleResult();
+                    
             return usuario;
         } catch (NoResultException e) {
             return null;

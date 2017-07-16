@@ -90,7 +90,10 @@ public class EventoDAO {
                 .createEntityManagerFactory("Evento");
         EntityManager em = factory.createEntityManager();
         try {
-            ArrayList<Evento> eventos = (ArrayList<Evento>) em.createQuery("SELECT e from Evento e where ativo=1 and isaprovado=1").getResultList();
+            ArrayList<Evento> eventos = (ArrayList<Evento>) em
+                    .createQuery("SELECT e from Evento e "
+                            + "left join e.espaco s"
+                            + " where e.ativo=1 and e.isAprovado=1").getResultList();
 //                    .setParameter("name", nomeEspaco)
 //                    .setParameter("senha", senha).getSingleResult();            
             return eventos;

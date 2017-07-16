@@ -10,10 +10,10 @@
         <div class="title"> Atribuir espaco a um evento</div>
         <hr></hr>
         <h:form>                        
-            Identificador da espaco/local: <h:inputText value="#{atribuirEspacoBean.espacoAssociado}" /> <br></br>
-            Identificador do evento: <h:inputText value="#{atribuirEspacoBean.eventoAssociado}" /><br></br>
+            Identificador da espaco/local: <h:inputText value="#{atribuirEspacoEventoBean.espacoAssociado}" /> <br></br>
+            Identificador do evento: <h:inputText value="#{atribuirEspacoEventoBean.eventoAssociado}" /><br></br>
             
-            <h:commandButton value="Atribuir espaco" action="#{atribuirEspacoBean.atribuir()}" />
+            <h:commandButton value="Atribuir espaco" action="#{atribuirEspacoEventoBean.atribuir()}" />
             
             <h:messages style="color:red;" />
         </h:form>

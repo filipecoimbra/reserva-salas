@@ -6,6 +6,8 @@
 package uff2017.reservasalas;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import uff2017.reservasalas.dao.PerfilUsuarioDAO;
 import uff2017.reservasalas.dao.UsuarioDAO;
@@ -32,7 +34,7 @@ public class CadastraUsuarioBean {
         usuario.getTipoUsuario().setIdTipoUsuario(idTipo);
         usuario.getPerfilUsuario().setIdPerfilUsuario(idPerfil);
         usuarioDAO.cadastrarUsuario(usuario);
-
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
     }
 
     public int getIdPerfil() {

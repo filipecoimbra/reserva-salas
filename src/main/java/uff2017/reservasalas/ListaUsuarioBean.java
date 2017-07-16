@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import uff2017.reservasalas.dao.UsuarioDAO;
 import uff2017.reservasalas.model.Espaco;
@@ -51,11 +53,13 @@ public class ListaUsuarioBean implements Serializable {
     public void saveEdit() {            
         usuariodao.updateUsuario(usuario);        
         edit = false;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario editado com sucesso."));
     }
 
     public void delete(Usuario usuario) {
         usuariodao.deletarUsuario(usuario);
         listaUsuario();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario apagado com sucesso."));
     }
 
     public void listaUsuario() {

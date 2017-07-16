@@ -7,6 +7,8 @@ package uff2017.reservasalas;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import uff2017.reservasalas.dao.EspacoDAO;
 import uff2017.reservasalas.model.Espaco;
 
@@ -39,6 +41,7 @@ public class CadastroEspacoBean {
 
     public void cadastraEspaco() throws Exception {        
         espacoDAO.cadastrarEspaco(espaco);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso."));
     }
 
 }

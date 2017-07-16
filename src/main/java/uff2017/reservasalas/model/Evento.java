@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -47,12 +48,54 @@ public class Evento implements Serializable {
     private Espaco espaco;
     @Column
     boolean ativo;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<TipoUsuario> tiposUsuarioPermitidos;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Usuario> usuariosInscritos;
 
-    //private TipoEvento tipoEvento;
     public Evento() {
-        
+
+    }
+
+    public Evento(int id, String nome, String desc, String horaini,
+            String horafim, Date data, int partici, boolean aprovado, Espaco espaco,
+            boolean ativo, List<TipoUsuario> tipouser, List<Usuario> users) {
+
+        this.idEvento = id;
+        this.nome = nome;
+        this.descricao = desc;
+        this.horaInicio = horaini;
+        this.horaFim = horafim;
+        this.data = data;
+        this.maxParticipantes = partici;
+        this.isAprovado = aprovado;
+        this.espaco = espaco;
+        this.ativo = ativo;
+        this.tiposUsuarioPermitidos = tipouser;
+        this.usuariosInscritos = users;
+
+    }
+
+    @Override
+    public Evento clone() {
+        return new Evento(idEvento, nome, descricao, horaInicio, horaFim, data,
+                maxParticipantes, isAprovado, espaco, ativo, tiposUsuarioPermitidos,
+                usuariosInscritos);
+    }
+
+    public void restore(Evento evento) {
+        this.idEvento = evento.getIdEvento();
+        this.nome = evento.getNome();
+        this.descricao = evento.getDescricao();
+        this.horaInicio = evento.getHoraInicio();
+        this.horaFim = evento.getHoraFim();
+        this.data = evento.getData();
+        this.maxParticipantes = evento.getMaxParticipantes();
+        this.isAprovado = evento.isAprovado;
+        this.espaco = evento.getEspaco();
+        this.ativo = evento.isAtivo();
+        this.tiposUsuarioPermitidos = evento.getTiposUsuarioPermitidos();
+        this.usuariosInscritos = evento.getUsuariosInscritos();
     }
 
     public List<TipoUsuario> getTiposUsuarioPermitidos() {
@@ -62,7 +105,7 @@ public class Evento implements Serializable {
     public void setTiposUsuarioPermitidos(List<TipoUsuario> tiposUsuarioPermitidos) {
         this.tiposUsuarioPermitidos = tiposUsuarioPermitidos;
     }
-        
+
     public Espaco getEspaco() {
         return espaco;
     }
@@ -141,6 +184,14 @@ public class Evento implements Serializable {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public List<Usuario> getUsuariosInscritos() {
+        return usuariosInscritos;
+    }
+
+    public void setUsuariosInscritos(List<Usuario> usuariosInscritos) {
+        this.usuariosInscritos = usuariosInscritos;
     }
 
 }

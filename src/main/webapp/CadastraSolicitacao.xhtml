@@ -25,11 +25,13 @@
             <h:selectBooleanCheckbox value="#{cadastraSolicitacaoBean.alunograduacao}" /> Alunos Graduacao<br></br>
             <h:selectBooleanCheckbox value="#{cadastraSolicitacaoBean.alunopos}" /> Alunos Pos-Graduacao<br></br>
             <h:selectBooleanCheckbox value="#{cadastraSolicitacaoBean.docentes}" /> Docentes<br></br>  
-
-
-
+            
             <h:commandButton value="Cadastrar" action="#{cadastraSolicitacaoBean.cadastraSolicitacao()}" />
+            
+            <h:messages style="color:red;" />
         </h:form>
+        
+        
 
     </h:body>
 </html>

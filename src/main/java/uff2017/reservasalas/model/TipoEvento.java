@@ -5,11 +5,13 @@
  */
 package uff2017.reservasalas.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author fabri
  */
-public class TipoEvento {
+public class TipoEvento implements Serializable{
     
     private int idTipoEvento;
     private String descricao;
